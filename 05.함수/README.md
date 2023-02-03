@@ -75,3 +75,33 @@ const input: (ball: string[], count?: number) => number;
 ### void반환 타입
 
 함수 타입을 선언할 때 void를 사용하면 함수에서 반환되는 값이 무시된다.
+
+### never 반환 타입
+
+never 반환 함수는 의도적으로 항상 오류를 발생시키거나 무한 루프를 실행하는 함수를 말한다.
+
+> nerver는 void와 다르다 void는 아무것도 변환하지 않는 함수를 위한 것이고 never 는 절대 반환하지 않는 함수를 위한 것 이다.
+
+### 함수 오버로드
+하나의 최종 구현 시그니처와 그 함수의 본문 앞에 서로 다른 버전의 함수 이름, 매개변수, 반환 타입을 여러 번 선언한다.
+
+오버로드된 함수 호출에 대해 구문 오류를 생성할지 여부를 결정할 때 타입스크립트는 함수의 오버로드 시그니처만 확인한다.
+
+```typescript
+// 오버로드 시그니처
+function createDate(time : number): Date;
+function createDate(month: number, day: number, year: number): Date;
+
+// 구현 시그니처
+function createDate(second: number, day?:number, year?: number){
+  if(second === day && day === year){
+    console.log('binggo!')
+  }
+}
+
+createDate(1234) // 됨
+createDate(1,1,2023) // 됨
+
+createDate(1,2) //안됨
+```
+> 함수 오버로드는 복잡하고 설명하기 어려운 함수 타입에 사용하지만 가능하면 사용하지 않는 것이 좋다.
