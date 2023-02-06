@@ -23,3 +23,22 @@ url.text + = 'wow';
 ```
 
 readonly 제한자는 타입시스템에만 존재하며 인터페이스에서만 사용 가능함.
+
+### 인터페이스 확장
+
+타입스크립트는 인터페이스가 다른 인터페이스의 모든 멤버를 복사해서 선언할 수 있는 확장된 인터페이스를 허용한다. 이 때 extands 키워드를 사용하고 확장된 두 인터페이스 모두의 멤버를 갖는다.
+
+```typescript
+interface Song {
+  title: string;
+}
+
+interface Hip extends Song {
+  pages: number;
+}
+
+let Sing: Hip = {
+  title: 'apple',
+  number: 7,
+}; // OK
+```
