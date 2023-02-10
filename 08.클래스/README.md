@@ -45,3 +45,61 @@ new WithValue().maybe.length
 //Error: Object is possibly 'undefined'
 
 ```
+
+### 추상 클래스
+
+abstract 키워드를 통해 클래스의 구현을 선언하지 않고 인터페이스 처럼 사용할 수 있다.
+
+```typescript
+
+abstract class School {
+    readonly name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+
+    abstract getStudentTypes(): string[];
+}
+
+class Absence extends School {} // Error
+
+school = new School('S'); // Error
+```
+
+### 멤버 접근성
+
+- public(default) : 모든 곳에서 누구나 접근 가능
+- protected: 클래스 내부 또는 하위 클래스에서만 접근 가능
+- private: 클래스 내부에서만 접근 가능
+
+이러한 키워드는 순수하게 타입 시스템 내에 존재합니다. 코드가 js로 컴파일 되면 다른 모든 타입 시스템 구문과 함께 키워드도 제거됩니다.
+
+```typescript
+
+class Base {
+    isPublic = 0;
+    public thisIsPublic = 1;
+    protected isProtected = 2;
+    private isPrivate = 3;
+    #truePrivate =4;
+}
+
+class Sub extends Base {
+    console.log(this.isProtected) // 접근 가능
+    console.log(this.isPrivate) // 접근 불가능
+    console.log(this.#truePrivate) // 접근 불가능
+}
+
+```
+
+### 정적 필드 제한자
+
+ts에서는 static 키워드를 단독으로 사용하거나 readonly와 접근성 키워드를 함께 사용할 수 있도록 지원한다.
+함께 사용할 경우 접근성 키워드를 먼저 작성하고, 그다음 static, readonly 키워드를 쓴다.
+
+``` typescript
+class Example{
+    protected static readonly answer: 'secret'
+}
+```
