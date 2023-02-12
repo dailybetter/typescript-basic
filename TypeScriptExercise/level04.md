@@ -55,4 +55,4 @@ persons.filter(isUser).forEach(logPerson);
 ```
 3번 문제와 비슷하게 타입 내로잉에 대한 문제였다.
 
-답안에서는 is 키워드를 활용해서 isAdmin 함수와 isUser 함수에 person is Admin, person is User 를 붙여줬다.
+답안에서는 is 키워드(타입 서술어)를 활용해서 isAdmin 함수와 isUser 함수에 person is Admin, person is User 를 붙여줬다.
