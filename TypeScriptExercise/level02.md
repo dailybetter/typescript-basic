@@ -19,7 +19,7 @@ interface Admin {
 
 export type Person = User | Admin;
 
-export const persons: Person[] /* <- Person[] */ = [
+export const persons: Person[]  = [
     {
         name: 'Max Mustermann',
         age: 25,
